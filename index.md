@@ -5,7 +5,7 @@ title: Privacy Policy — AI Reselling Ecosystem
 # AI Reselling Ecosystem — Privacy Policy
 
 **Effective date:** November 21, 2026  
-**Last updated:** November 21, 2026
+**Last updated:** November 22, 2026
 
 ## Who operates this application
 
@@ -26,13 +26,13 @@ The application uses the data to:
 - Match eBay orders to the seller's inventory.
 - Create a packaging and shipping task list and avoid duplicate sale alerts.
 - Track locally marked packaging progress and eBay-reported fulfillment status.
-- Produce local order summaries and, if enabled in a future version, seller notifications.
+- Produce local order summaries and, if the seller explicitly installs the optional Windows scheduled task, poll orders every five minutes and display generic local Windows notifications for new paid sales and a daily task report.
 
-The current code **does not** automatically publish listings, make purchases, place bids, change listing prices, mark orders shipped on eBay, or relist items. Planned features, such as ZEUS/StarNet notifications or listing recommendations, are not active unless separately deployed and configured.
+The current code **does not** automatically publish listings, make purchases, place bids, change listing prices, mark orders shipped on eBay, or relist items. Windows-local scheduled monitoring is opt-in and does not forward data to outside notification services. Planned external ZEUS/StarNet notifications and listing recommendations are not active unless separately deployed and configured.
 
 ## Storage and security
 
-The application is designed to run primarily on the seller's own Windows computer. Operational records are kept in a **local SQLite database**. The seller OAuth integration is designed to protect access and refresh tokens using **Windows Data Protection API (DPAPI)** tied to the operator's Windows account.
+The application is designed to run primarily on the seller's own Windows computer. Operational records, alert-delivery status and daily report state are kept in a **local SQLite database**. A privacy-reduced local JSON task feed and daily report may be stored under the application's ignored local output directory; these include order IDs and inventory task details but not buyer names or addresses. The seller OAuth integration is designed to protect access and refresh tokens using **Windows Data Protection API (DPAPI)** tied to the operator's Windows account.
 
 Application secrets, OAuth tokens, unredacted order responses, and local databases are not intended to be committed to public GitHub repositories. Access to locally stored data depends on the security of the operator's computer and account. No method of data storage is completely risk-free.
 
@@ -40,7 +40,7 @@ Application secrets, OAuth tokens, unredacted order responses, and local databas
 
 eBay supplies information to the application under the seller's authorization. The application **does not sell personal information** or use eBay order information for third-party advertising.
 
-A future ZEUS/StarNet workflow may receive a restricted task summary containing order IDs, item IDs, operational status and inventory locations. That feed is designed to omit buyer names and contact and shipping-address details. If the seller enables an external AI model or notification provider, the data sent to that provider will be subject to its own terms and privacy practices. **That external delivery is not connected in the current prototype.**
+A future ZEUS/StarNet workflow may receive a restricted task summary containing order IDs, item IDs, operational status and inventory locations. That feed is designed to omit buyer names and contact and shipping-address details. If the seller enables an external AI model or notification provider, the data sent to that provider will be subject to its own terms and privacy practices. **External ZEUS delivery and phone push are not connected in the current prototype.** Optional notifications use generic messages on the operator's own Windows desktop.
 
 ## Retention, access, and deletion
 
